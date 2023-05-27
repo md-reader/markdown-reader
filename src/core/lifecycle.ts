@@ -19,15 +19,10 @@ const htmlHeadTags = [
   },
 ]
 
-let container: Ele<HTMLElement> = null
 let showContainerRaw: boolean = true
 
 export default {
-  init(element: HTMLElement) {
-    if (element) {
-      container = new Ele<HTMLElement>(element)
-      container.hide()
-    }
+  init() {
     htmlHeadTags.forEach(el => HEAD.appendChild(new Ele(el.tag, el.attrs).ele))
     BODY.classList.add('md-reader')
   },
@@ -36,10 +31,6 @@ export default {
   },
   toggleRaw(eles: Array<Ele>) {
     BODY.classList.toggle('md-reader')
-
-    if (container) {
-      container.toggle(showContainerRaw)
-    }
     showContainerRaw = !showContainerRaw
     eles.forEach(ele => ele.toggle(showContainerRaw))
   },

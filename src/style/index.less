@@ -16,6 +16,14 @@ body.md-reader {
     box-sizing: border-box;
   }
 
+  // raw elements
+  > #header,
+  > #parentDirLinkBox,
+  > pre,
+  > table {
+    display: none !important;
+  }
+
   .md-reader {
     &__side {
       overflow: auto;
@@ -122,6 +130,12 @@ body.md-reader {
               opacity: 1;
             }
           }
+          &::before {
+            content: '';
+            display: block;
+            height: calc(32px - 0.75em);
+            margin-top: calc(-32px + 0.75em);
+          }
         }
         // code-block copy button
         pre.md-reader__code-block {
@@ -135,7 +149,7 @@ body.md-reader {
             }
           }
           &:hover {
-            code::before {
+            code:not(:empty)::before {
               opacity: 0;
             }
             .md-reader__btn--copy {
@@ -196,6 +210,9 @@ body.md-reader {
       }
       &__btn--side-expand {
         transform: translateX(0);
+        svg path[fill-opacity] {
+          color: transparent;
+        }
       }
     }
     @media screen and (min-width: 1660px) {
@@ -237,6 +254,9 @@ body.md-reader {
       }
       &__btn--side-expand {
         transform: translateX(0);
+        svg path[fill-opacity] {
+          color: transparent;
+        }
       }
     }
   }
@@ -310,6 +330,9 @@ body.md-reader {
       left: 16px;
       transition: background 0.1s, color 0.1s, transform 0.3s;
       transform: translateX(@side-width);
+      svg path[fill-opacity] {
+        transition: 0.1s color;
+      }
     }
     &--go-top {
       position: fixed;

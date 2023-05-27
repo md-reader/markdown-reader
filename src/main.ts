@@ -79,7 +79,7 @@ function main(data: Data) {
   )
 
   const rawContainer = getRawContainer()
-  lifecycle.init(rawContainer)
+  lifecycle.init()
   mdRaw = rawContainer?.textContent
 
   /* render content */

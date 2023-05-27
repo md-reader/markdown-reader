@@ -1,4 +1,4 @@
-@import url('@md-reader/theme');
+@import url('@md-reader/theme/src/index.less');
 
 .light() {
   --color-white: #fff;
@@ -9,7 +9,7 @@
   --color-mark: #fff07e;
   --color-text-primary: #2d3d50;
   --color-text-secondary: #586069;
-  --color-text-gray: #909090;
+  --color-text-gray: #999999;
   --color-border: #d0d7de;
   --color-bg: #fff;
   --color-side: var(--color-text-secondary);
@@ -41,7 +41,7 @@
   --color-modal-bg: rgba(255, 255, 255, 0.6);
   --opacity-img: 1;
   .hljs-light();
-  .highlight();
+  .hljs-colors();
 }
 
 .dark() {
@@ -53,7 +53,7 @@
   --color-mark: #fce79b;
   --color-text-primary: #b5b5b8;
   --color-text-secondary: #bbbbbb;
-  --color-text-gray: #909090;
+  --color-text-gray: #585858;
   --color-border: #30363d;
   --color-bg: #131415;
   --color-side: var(--color-text-primary);
@@ -84,7 +84,7 @@
   --color-modal-bg: rgba(0, 0, 0, 0.4);
   --opacity-img: 0.8;
   .hljs-dark();
-  .highlight();
+  .hljs-colors();
 }
 
 :root {
