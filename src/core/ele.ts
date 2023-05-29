@@ -1,5 +1,6 @@
 export type ElementType = HTMLElement | SVGSVGElement | DocumentFragment
 export type Attrs = { className?: string | string[] } | { [k: string]: string }
+export type EleType = ElementType | Ele | string
 
 export default class Ele<T extends ElementType = ElementType> {
   ele: T
@@ -39,13 +40,18 @@ export default class Ele<T extends ElementType = ElementType> {
     ele.classList.add(...classList.filter(Boolean))
   }
 
-  static from(node: ElementType | Ele): ElementType {
-    return node instanceof Ele ? node.ele : node
+  static from(node: string): Text
+  static from(node: Omit<EleType, string>): ElementType
+  static from(node: EleType) {
+    return node instanceof Ele
+      ? node.ele
+      : typeof node === 'string'
+      ? document.createTextNode(node)
+      : node
   }
 
-  constructor(element: T, attrs?: Attrs, children?: Ele | ElementType)
-  constructor(tagName: string, attrs?: Attrs, children?: Ele | ElementType)
-  constructor(tagName: string, attrs?: Attrs, children?: (Ele | ElementType)[])
+  constructor(element: T, attrs?: Attrs, children?: EleType | EleType[])
+  constructor(tagName: string, attrs?: Attrs, children?: EleType | EleType[])
   constructor(tagName: string | T, attrs?: Attrs, children?: any) {
     if (typeof tagName !== 'string') {
       this.ele = tagName
@@ -82,6 +88,9 @@ export default class Ele<T extends ElementType = ElementType> {
     return this.ele.querySelector(selectors)
   }
   queryAll(selectors: string): HTMLElement[] {
+    if (this instanceof Text) {
+      return
+    }
     return Array.from(this.ele.querySelectorAll(selectors))
   }
   remove() {
@@ -115,17 +124,14 @@ export default class Ele<T extends ElementType = ElementType> {
     Object.assign(this.style, style)
     return this.style
   }
-  append(newChild: ElementType | Ele): ElementType
-  append(newChild: (ElementType | Ele)[]): ElementType[]
-  append(newChild: (ElementType | Ele)[] | ElementType | Ele) {
+  append(newChild: string | string[]): Text | Text[]
+  append(newChild: EleType | EleType[]): ElementType | ElementType[]
+  append(newChild: any): any {
     return Array.isArray(newChild)
       ? newChild.map(child => this.append(child))
       : this.ele.appendChild(Ele.from(newChild))
   }
-  insertBefore(
-    newChild: ElementType | Ele,
-    refChild: ElementType | Ele,
-  ): ElementType {
+  insertBefore(newChild: EleType, refChild: EleType): ElementType | Text {
     return this.ele.insertBefore(Ele.from(newChild), Ele.from(refChild))
   }
   on(
@@ -169,11 +175,11 @@ export default class Ele<T extends ElementType = ElementType> {
   }
 }
 
-function isFragment(element: ElementType | Ele): element is DocumentFragment {
+function isFragment(element: EleType): element is DocumentFragment {
   return element instanceof DocumentFragment
 }
 
-function isImg(element: ElementType | Ele): element is HTMLImageElement {
+function isImg(element: EleType): element is HTMLImageElement {
   return element instanceof HTMLImageElement
 }
 

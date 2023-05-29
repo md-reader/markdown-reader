@@ -40,7 +40,9 @@
         "file://*/*.MD",
         "file://*/*.MDX",
         "file://*/*.MKD",
-        "file://*/*.MARKDOWN"
+        "file://*/*.MARKDOWN",
+        "file://*/*/",
+        "file:///"
       ]
     }
   ],

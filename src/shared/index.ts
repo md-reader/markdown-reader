@@ -6,6 +6,13 @@ export const BODY = document.body
 export const RAW_SELECTOR = 'pre'
 export const HEADERS = 'h1, h2, h3, h4, h5, h6'
 export const CONTENT_TYPES = ['text/plain', 'text/markdown']
+export const mdFilePathPattern = /\.(mdx?|mkd|markdown)$/i
+export const dirPathPattern = /^file:\/\/(.*\/)+$/
+export const isDirRoot = dirPathPattern.test(window.location.href)
+export let dirPath = document.location.pathname
+if (!dirPath.endsWith('/')) {
+  dirPath += '/'
+}
 
 export const darkMediaQuery: MediaQueryList = window.matchMedia(
   '(prefers-color-scheme: dark)',
@@ -18,7 +25,7 @@ export const toTheme = (theme: Theme): Exclude<Theme, 'auto'> =>
   theme === 'auto' ? getMediaQueryTheme() : theme
 
 export function getAssetsURL(path: string): string {
-  return chrome.extension.getURL(path)
+  return chrome.runtime.getURL(path)
 }
 
 export function getRawContainer(selector: string = RAW_SELECTOR): HTMLElement {
@@ -29,7 +36,59 @@ export function getHeads(
   container: HTMLElement | Ele,
   selector: string = HEADERS,
 ): Array<HTMLElement> {
-  return Array.from(Ele.from(container).querySelectorAll(selector))
+  return Array.from(
+    (Ele.from(container) as HTMLElement).querySelectorAll(selector),
+  )
+}
+
+export type FileItem = {
+  name: string
+  path: string
+  isFolder: boolean
+  size: number
+  sizeUnit: string
+  timestamp: number
+  date: Date
+  parentPath: string
+}
+
+export async function getDirData(url?: string): Promise<FileItem[]> {
+  const regex =
+    /addRow\("(.*?)",\s*"(.*?)",\s*(\d+),\s*(\d+),\s*"([\d.]+ [BkMG]B?)",\s*(\d+),\s*"(.*?)"\);/g
+  const matches: FileItem[] = []
+  let match: RegExpExecArray
+
+  let html
+  if (!url) {
+    html = BODY.outerHTML
+  } else {
+    if (!url.endsWith('/')) {
+      url += '/'
+    }
+    html = await fetchHTML(url)
+  }
+  while ((match = regex.exec(html)) !== null) {
+    matches.push({
+      name: match[1],
+      path: match[2],
+      isFolder: !!parseInt(match[3]),
+      size: parseInt(match[4]),
+      sizeUnit: match[5],
+      timestamp: parseInt(match[6]),
+      date: new Date(match[7]),
+      parentPath: url,
+    })
+  }
+  return matches
+}
+
+export async function fetchHTML(url): Promise<string> {
+  return new Promise(resolve => {
+    chrome.runtime.sendMessage(
+      { action: 'fetch', data: 'file://' + url },
+      resolve,
+    )
+  })
 }
 
 let allThemeClassNames = null

@@ -7,6 +7,7 @@ export default {
   MD_SIDE: p`side`,
   MD_SIDE_ACTIVE: p`side-li--active`,
   MD_CONTENT: p`markdown-content`,
+  MD_TIPS: p`markdown-tips`,
   MD_BUTTON: p`btn`,
   HEAD_ANCHOR: p`head-anchor`,
   BUTTON_WRAP_ELE: p`button-wrap`,
@@ -16,6 +17,8 @@ export default {
   COPY_BTN: p`btn--copy`,
   SIDE_COLLAPSED: 'side-collapsed',
   SIDE_EXPANDED: 'side-expanded',
+  SIDE_FOLDER_CONTENT: 'side-folder-content',
+  SIDE_FOLDER_EXPANDED: 'side-folder-expanded',
   MODAL: p`modal`,
   ZOOM_IMAGE: p`zoom-image`,
 }

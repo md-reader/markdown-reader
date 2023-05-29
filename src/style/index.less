@@ -91,11 +91,49 @@ body.md-reader {
           &-h6 a {
             .head-indent(6);
           }
+
+          &-file,
+          &-folder {
+            > a {
+              padding-left: 1em;
+              font-size: 1.01em;
+              -webkit-line-clamp: 1;
+              svg {
+                width: 1.2em;
+                height: 1.2em;
+                vertical-align: text-top;
+                fill: currentColor;
+                pointer-events: none;
+              }
+              svg:first-child {
+                transition: 0.1s;
+              }
+              svg:last-child {
+                margin-right: 0.4em;
+              }
+            }
+            &.side-folder-expanded {
+              > a svg:first-child {
+                transform: rotate(90deg);
+              }
+              > .side-folder-content {
+                display: block;
+              }
+            }
+            .side-folder-content {
+              display: none;
+              padding-left: 1em;
+            }
+          }
+          &-file a {
+            padding-left: 2.2em;
+          }
         }
       }
     }
 
     &__body {
+      position: relative;
       min-height: 100vh;
       padding-left: @side-width;
       transition: padding 0.3s;
@@ -157,6 +195,35 @@ body.md-reader {
             }
           }
         }
+        &:not(:empty) + .md-reader__markdown-tips {
+          display: none;
+        }
+      }
+      .md-reader__markdown-tips {
+        text-align: center;
+        white-space: nowrap;
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        padding-left: @side-width;
+        transition: padding 0.3s;
+        color: var(--color-text-gray);
+        .icon-logo {
+          width: 6em;
+          fill-opacity: 0.3;
+          transform-origin: center;
+          animation: rotateIn 0.5s ease-in-out forwards;
+        }
+      }
+      @keyframes rotateIn {
+        from {
+          opacity: 0;
+          transform: scale(0) rotate(0);
+        }
+        to {
+          transform: scale(1) rotate(720deg);
+        }
       }
     }
 
@@ -207,6 +274,9 @@ body.md-reader {
       }
       &__body {
         padding-left: 0px;
+        .md-reader__markdown-tips {
+          padding-left: 0px;
+        }
       }
       &__btn--side-expand {
         transform: translateX(0);
@@ -251,6 +321,9 @@ body.md-reader {
       }
       &__body {
         padding-left: 0px;
+        .md-reader__markdown-tips {
+          padding-left: 0px;
+        }
       }
       &__btn--side-expand {
         transform: translateX(0);

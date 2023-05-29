@@ -13,7 +13,8 @@
     "lib": ["ESNext", "DOM"],
     "types": ["chrome", "svelte"],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["src/*"],
+      "@md-reader/*": ["node_modules/@md-reader/*"]
     }
   },
   "include": ["src/**/*"]
