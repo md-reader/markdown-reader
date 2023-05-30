@@ -20,18 +20,11 @@ import {
   getDirData,
   fetchHTML,
   toTheme,
-  mdFilePathPattern,
+  extPattern,
   type FileItem,
 } from '@/shared'
-import codeIcon from '@/images/icon_code.svg'
-import sideIcon from '@/images/icon_side.svg'
-import goTopIcon from '@/images/icon_go_top.svg'
-import fileIcon from '@/images/icon_file.svg'
-import folderHideIcon from '@/images/icon_file_hidden.svg'
-import folderIcon from '@/images/icon_folder.svg'
-import fileMDIcon from '@/images/icon_file_md.svg'
-import arrowRightIcon from '@/images/icon_arrow_right.svg'
-import logoIcon from '@/images/icon_logo.svg'
+import icons, { getFileIcon } from '@/core/icons'
+
 import '@/style/index.less'
 
 async function main(data: Data) {
@@ -129,7 +122,7 @@ async function main(data: Data) {
     true,
   )
   const mdTips = new Ele<HTMLElement>('div', { className: className.MD_TIPS }, [
-    svg(logoIcon),
+    svg(icons.logoIcon),
     // new Ele(
     //   'div',
     //   { style: 'margin-top: 1em' },
@@ -180,6 +173,12 @@ async function main(data: Data) {
           target.parentElement.classList.toggle(className.SIDE_FOLDER_EXPANDED)
         } else if (target.getAttribute('folder') === '0') {
           mdRaw = await fetchHTML(href)
+          if (extPattern.test(href)) {
+            const match = href.match(extPattern)
+            if (match) {
+              mdRaw = `\`\`\`${match[1]}\n${mdRaw}\n\`\`\``
+            }
+          }
           contentRender(mdRaw)
           window.scrollTo(0, 0)
         }
@@ -197,7 +196,7 @@ async function main(data: Data) {
       className: [className.MD_BUTTON, className.CODE_TOGGLE_BTN],
       title: 'Toggle raw',
     },
-    svg(codeIcon),
+    svg(icons.codeIcon),
   )
   rawToggleBtn.on('click', () => {
     lifecycle.toggleRaw([mdBody, mdSide])
@@ -210,7 +209,7 @@ async function main(data: Data) {
       className: [className.MD_BUTTON, className.SIDE_EXPAND_BTN],
       title: 'Expand side',
     },
-    svg(sideIcon),
+    svg(icons.sideIcon),
   )
   sideExpandBtn.on('click', () => {
     chrome.runtime.sendMessage({
@@ -259,7 +258,7 @@ async function main(data: Data) {
       className: [className.MD_BUTTON, className.GO_TOP_BTN],
       title: 'Go top',
     },
-    svg(goTopIcon),
+    svg(icons.goTopIcon),
   )
   goTopBtn.hide()
   goTopBtn.on('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }))
@@ -344,16 +343,8 @@ async function main(data: Data) {
         'data-href': `${file.parentPath || dirPath}${file.path}`,
       },
       [
-        file.isFolder ? svg(arrowRightIcon) : '',
-        svg(
-          file.isFolder
-            ? folderIcon
-            : file.path.startsWith('.')
-            ? folderHideIcon
-            : mdFilePathPattern.test(file.path)
-            ? fileMDIcon
-            : fileIcon,
-        ),
+        file.isFolder ? svg(icons.arrowRightIcon) : '',
+        svg(getFileIcon(file)),
         content,
       ],
     )

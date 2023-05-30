@@ -7,6 +7,8 @@ export const RAW_SELECTOR = 'pre'
 export const HEADERS = 'h1, h2, h3, h4, h5, h6'
 export const CONTENT_TYPES = ['text/plain', 'text/markdown']
 export const mdFilePathPattern = /\.(mdx?|mkd|markdown)$/i
+export const extPattern =
+  /\.(html|jsonc?|vue|s?css|less|ya?ml|(?:c|m)?(?:j|t)sx?)$/i
 export const dirPathPattern = /^file:\/\/(.*\/)+$/
 export const isDirRoot = dirPathPattern.test(window.location.href)
 export let dirPath = document.location.pathname
