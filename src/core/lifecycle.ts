@@ -20,7 +20,7 @@ const htmlHeadTags = [
 ]
 
 let container: Ele<HTMLElement> = null
-let showContainerRaw: boolean = true
+let showContainerRaw = true
 
 export default {
   init(element: HTMLElement) {

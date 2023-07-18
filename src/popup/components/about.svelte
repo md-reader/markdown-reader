@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
   import Tooltip, { Wrapper } from '@smui/tooltip'
   import Icon from './icon.svelte'
   import logoIcon from '@/images/logo.svg'
@@ -9,32 +9,34 @@
   export let version
 </script>
 
-<Icon class="logo-icon" svg={logoIcon} />
-<h1>md-reader</h1>
-<div class="links">
-  <Wrapper>
-    <a target="_blank" href={homepage}>
-      <Icon class="icon-link" svg={chromeIcon} />
-    </a>
-    <Tooltip xPos="start">Chrome Web Store</Tooltip>
-  </Wrapper>
-  <Wrapper>
-    <a target="_blank" href="https://github.com/md-reader/md-reader">
-      <Icon class="icon-link" svg={githubIcon} />
-    </a>
-    <Tooltip xPos="start">GitHub</Tooltip>
-  </Wrapper>
-  <Wrapper>
-    <a href="mailto:mkdreader@gmail.com">
-      <Icon class="icon-link" svg={emailIcon} />
-    </a>
-    <Tooltip xPos="start">Email</Tooltip>
-  </Wrapper>
-</div>
-<div class="footer">
-  <div class="version">v{version}</div>
-  <div class="copyright">
-    Copyright &copy;2018-{new Date().getFullYear()} Bener.
+<div>
+  <Icon class="logo-icon" svg={logoIcon} />
+  <h1>md-reader</h1>
+  <div class="links">
+    <Wrapper>
+      <a target="_blank" href={homepage}>
+        <Icon class="icon-link" svg={chromeIcon} />
+      </a>
+      <Tooltip xPos="start">Chrome Web Store</Tooltip>
+    </Wrapper>
+    <Wrapper>
+      <a target="_blank" href="https://github.com/md-reader/md-reader">
+        <Icon class="icon-link" svg={githubIcon} />
+      </a>
+      <Tooltip xPos="start">GitHub</Tooltip>
+    </Wrapper>
+    <Wrapper>
+      <a href="mailto:mkdreader@gmail.com">
+        <Icon class="icon-link" svg={emailIcon} />
+      </a>
+      <Tooltip xPos="start">Email</Tooltip>
+    </Wrapper>
+  </div>
+  <div class="footer">
+    <div class="version">v{version}</div>
+    <div class="copyright">
+      Copyright &copy;2018-{new Date().getFullYear()} Bener.
+    </div>
   </div>
 </div>
 

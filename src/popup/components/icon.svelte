@@ -1,6 +1,6 @@
-<script>
-  export let svg
-  let className
+<script lang="ts">
+  export let svg: { attributes: Record<string, string>; content: string }
+  let className: string
   export { className as class }
 </script>
 

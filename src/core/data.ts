@@ -1,5 +1,5 @@
 import MD_PLUGINS from '@/config/md-plugins'
-import PAGE_THEMES from '@/config/page-themes'
+import PAGE_THEMES, { type Theme } from '@/config/page-themes'
 import i18n from '@/config/i18n'
 
 export interface Data {
@@ -8,7 +8,7 @@ export interface Data {
   language?: string
   centered?: boolean
   mdPlugins?: typeof MD_PLUGINS
-  pageTheme?: typeof PAGE_THEMES[0]
+  pageTheme?: Theme
   hiddenSide?: boolean
 }
 

@@ -1,13 +1,13 @@
 import Ele from '@/core/ele'
 import themeTypes, { themePrefix, type Theme } from '@/config/page-themes'
 
-export const HEAD = document.head
-export const BODY = document.body
+export const HEAD = globalThis.document?.head
+export const BODY = globalThis.document?.body
 export const RAW_SELECTOR = 'pre'
 export const HEADERS = 'h1, h2, h3, h4, h5, h6'
 export const CONTENT_TYPES = ['text/plain', 'text/markdown']
 
-export const darkMediaQuery: MediaQueryList = window.matchMedia(
+export const darkMediaQuery: MediaQueryList = globalThis.matchMedia?.(
   '(prefers-color-scheme: dark)',
 )
 
@@ -18,7 +18,7 @@ export const toTheme = (theme: Theme): Exclude<Theme, 'auto'> =>
   theme === 'auto' ? getMediaQueryTheme() : theme
 
 export function getAssetsURL(path: string): string {
-  return chrome.extension.getURL(path)
+  return chrome.runtime.getURL(path)
 }
 
 export function getRawContainer(selector: string = RAW_SELECTOR): HTMLElement {
@@ -43,7 +43,7 @@ export function setTheme(themeType: Theme) {
 
 export function xhr(
   url: string,
-  method: string = 'GET',
+  method = 'GET',
   body?: Document | XMLHttpRequestBodyInit,
 ): Promise<EventTarget> {
   return new Promise((resolve, reject) => {

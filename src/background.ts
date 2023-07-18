@@ -6,7 +6,7 @@ chrome.runtime.onMessage.addListener(({ action, data }, _sender, callback) => {
   return true
 })
 
-async function messageHandler(action: string, data: any, callback?) {
+async function messageHandler(action: string, data, callback?: (data) => void) {
   switch (action) {
     case 'storage':
       await storage.set({ [data.key]: data.value })
@@ -39,7 +39,7 @@ const actionMap = {
   hiddenSide: 'toggleSide',
 }
 
-function updatePage(key: keyof typeof actionMap, value?: any) {
+function updatePage(key: keyof typeof actionMap, value?) {
   const action = actionMap[key]
   action &&
     chrome.tabs.query({ currentWindow: true, active: true }, tabs => {

@@ -2,7 +2,7 @@
   "name": "__MSG_ext_name__",
   "version": "2.12.5",
   "author": "Bener",
-  "manifest_version": 2,
+  "manifest_version": 3,
   "description": "__MSG_ext_desc__",
   "default_locale": "en",
   "icons": {
@@ -12,11 +12,16 @@
     "128": "images/logo-stroke.png",
     "512": "images/logo-stroke.png"
   },
-  "web_accessible_resources": ["css/*", "fonts/*", "images/*"],
+  "web_accessible_resources": [
+    {
+      "resources": ["css/*", "fonts/*", "images/*"],
+      "matches": ["*://*/*"]
+    }
+  ],
   "background": {
-    "scripts": ["js/background.js"]
+    "service_worker": "js/background.js"
   },
-  "browser_action": {
+  "action": {
     "default_title": "md-reader",
     "default_popup": "popup.html"
   },

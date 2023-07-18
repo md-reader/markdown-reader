@@ -2,6 +2,10 @@ body {
   --mdc-theme-primary: #607cd2;
   --mdc-theme-secondary: var(--mdc-theme-primary);
   --mdc-ripple-color: var(--mdc-theme-primary);
+  --mdc-segmented-button-selected-ink-color: #fff;
+  --mdc-segmented-button-selected-container-fill-color: var(
+    --mdc-theme-primary
+  );
   --mdc-menu-max-height: 320px;
   box-sizing: border-box;
   margin: 0;
@@ -15,21 +19,7 @@ body {
   margin-right: 16px;
 }
 
-.mdc-chip {
-  opacity: 0.54;
-}
-
-.mdc-chip .mdc-chip__checkmark {
-  display: none;
-}
-
-.form[disabled='false'] .mdc-chip.mdc-chip--selected {
-  background-color: var(--mdc-theme-primary);
-  color: #fff;
-  opacity: 1;
-}
-
-.form .mdc-segmented-button__segment--selected {
-  background-color: var(--mdc-theme-primary);
-  color: #fff;
+.mdc-segmented-button__segment[disabled] {
+  opacity: 0.38;
+  pointer-events: none;
 }

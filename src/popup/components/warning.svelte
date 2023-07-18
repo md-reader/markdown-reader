@@ -3,7 +3,7 @@
 </script>
 
 <div class="warning">
-  <p>{localize('warning_message')}</p>
+  <p>{localize('desc.accessWarning')}</p>
 </div>
 
 <style>

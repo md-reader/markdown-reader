@@ -10,7 +10,8 @@
   import SegmentedButton, { Segment } from '@smui/segmented-button'
   import MD_PLUGINS from '@/config/md-plugins'
   import PAGE_THEMES from '@/config/page-themes'
-  import { getDefaultData, type Data } from '@/core/data'
+  import { getDefaultData } from '@/core/data'
+  import type { Data } from '@/core/data'
   import pkg from '../../../package.json'
   import i18n from '@/config/i18n'
   import settingIcon from '@/images/setting.svg'
@@ -77,9 +78,14 @@
           <li
             class={tab.title === currentTab ? 'active' : ''}
             on:click={() => (currentTab = tab.title)}
-            tabindex={idx + 1}
+            on:keypress={() => (currentTab = tab.title)}
           >
-            <Icon class="side-icon" svg={tab.icon} />
+            <button
+              tabindex={idx + 1}
+              aria-label={localize('label', tab.title)}
+            >
+              <Icon class="side-icon" svg={tab.icon} />
+            </button>
           </li>
         {/each}
       </ul>
@@ -88,7 +94,7 @@
     <div class="setting-content">
       {#if currentTab === 'General'}
         <h2>
-          {currentTab}
+          {localize('label', currentTab)}
           {#if !isAllowViewFile}
             <Wrapper rich class="warning-tooltip">
               <Icon class="warning-icon" svg={warningIcon} />
@@ -103,9 +109,9 @@
         <div class="form general-content">
           <div class="form-item inline">
             <div class="label-item">
-              <div class="form-label">{localize('label_enable')}</div>
+              <div class="form-label">{localize('label.enable')}</div>
               <div class="form-label-desc">
-                {localize('setting_desc_enable')}
+                {localize('desc.enable')}
               </div>
             </div>
             <FormField align="end">
@@ -120,9 +126,9 @@
           <!-- centered -->
           <div class="form-item inline">
             <div class="label-item">
-              <div class="form-label">{localize('label_centered')}</div>
+              <div class="form-label">{localize('label.centered')}</div>
               <div class="form-label-desc">
-                {localize('setting_desc_centered')}
+                {localize('desc.centered')}
               </div>
             </div>
             <FormField align="end">
@@ -138,9 +144,9 @@
           <!-- auto refresh -->
           <div class="form-item inline">
             <div class="label-item">
-              <div class="form-label">{localize('label_autoRefresh')}</div>
+              <div class="form-label">{localize('label.autoRefresh')}</div>
               <div class="form-label-desc">
-                {localize('setting_desc_autoRefresh')}
+                {localize('desc.autoRefresh')}
               </div>
             </div>
             <FormField align="end">
@@ -155,7 +161,7 @@
 
           <!-- theme -->
           <div class="form-item inline">
-            <div class="label-item">{localize('label_theme')}</div>
+            <div class="label-item">{localize('label.theme')}</div>
             <SegmentedButton
               segments={PAGE_THEMES}
               let:segment
@@ -164,7 +170,7 @@
             >
               <Segment
                 {segment}
-                title={localize(segment)}
+                title={localize('label', segment)}
                 disabled={!data.enable}
                 on:selected={() => updateConfig('pageTheme', segment)}
               >
@@ -175,7 +181,7 @@
 
           <!-- language -->
           <div class="form-item">
-            <div class="label-item">{localize('label_language')}:</div>
+            <div class="label-item">{localize('label.language')}:</div>
             <FormField style="padding-left: 10px">
               <Select bind:value={data.language}>
                 {#each i18n.locales as locale}
@@ -186,7 +192,7 @@
           </div>
         </div>
       {:else if currentTab === 'Plugins'}
-        <h2>{currentTab}</h2>
+        <h2>{localize('label', currentTab)}</h2>
         <div class="form plugin-content">
           <!-- <div class="form-item inline">
             <div class="label-item">
@@ -198,7 +204,7 @@
           </div> -->
           {#each MD_PLUGINS as plugin}
             <div class="form-item inline">
-              <div class="label-item">{localize(`plugin_desc_${plugin}`)}</div>
+              <div class="label-item">{localize('desc', plugin)}</div>
               <FormField align="end">
                 <Switch
                   color="primary"
@@ -244,32 +250,38 @@
     color: #243158e3;
   }
   .setting-side li {
-    padding: 9px;
-    border-radius: 8px;
-    transition: 0.2s;
-    cursor: pointer;
     margin-bottom: 1px;
   }
-  .setting-side li:active,
-  .setting-side li.active {
+  .setting-side li button:active,
+  .setting-side li.active button {
     transition: 0.2s, background 0s;
     background: #e9efff;
     color: var(--mdc-theme-primary);
   }
-  .setting-side li:focus-visible {
+  .setting-side button:focus-visible {
     background: #e9efffb3;
     outline: none;
   }
 
-  .setting-side li:hover {
+  .setting-side li button:hover {
     background: #e9efffdd;
   }
-  .setting-side li:active {
+  .setting-side li button:active {
     transform: scale(0.95);
   }
-  .setting-side li :global(svg) {
+  .setting-side li button :global(svg) {
     width: 30px;
     height: 30px;
+  }
+  .setting-side button {
+    display: block;
+    background: none;
+    border: none;
+    border-radius: 8px;
+    padding: 9px;
+    font-size: 0;
+    cursor: pointer;
+    color: currentColor;
   }
   :global(.warning-tooltip) {
     display: inline-block;

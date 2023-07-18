@@ -1,0 +1,31 @@
+{
+  "root": true,
+  "env": {
+    "node": true
+  },
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:svelte/recommended",
+    "plugin:prettier/recommended"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "project": ["tsconfig.json"],
+    "extraFileExtensions": [".svelte"]
+  },
+  "plugins": ["@typescript-eslint"],
+  "rules": {},
+  "overrides": [
+    {
+      "files": ["*.svelte"],
+      "parser": "svelte-eslint-parser",
+      "parserOptions": {
+        "parser": "@typescript-eslint/parser"
+      }
+    }
+  ],
+  "globals": {
+    "chrome": true
+  }
+}

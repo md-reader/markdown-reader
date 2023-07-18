@@ -20,6 +20,7 @@ import copyIcon from '@/images/icon_copy.svg'
 import className from '@/config/class-name'
 import Ele, { svg } from './ele'
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 type Plugins = { [p: string]: ((a: MdOptions) => any[]) | any[] }
 const PLUGINS: Plugins = {
   Emoji: [mEmoji],
@@ -62,12 +63,14 @@ const PLUGINS: Plugins = {
 }
 
 export interface MdOptions {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   [key: string]: any
   config?: MarkdownIt.Options
   plugins?: Array<string>
 }
 
-function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
+function initRender(options: MdOptions) {
+  const { config = {}, plugins = [...MD_PLUGINS] } = options
   const copyButton = new Ele<HTMLElement>(
     'button',
     {
@@ -111,7 +114,7 @@ function initRender({ config = {}, plugins = [...MD_PLUGINS] }: MdOptions) {
   plugins.forEach(name => {
     let plugin = PLUGINS[name]
     if (typeof plugin === 'function') {
-      plugin = plugin(arguments[0])
+      plugin = plugin(options)
     }
     plugin && md.use(plugin[0], ...plugin.slice(1))
   })

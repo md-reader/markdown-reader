@@ -64,10 +64,10 @@ function main(data: Data) {
   }
 
   let pollingTimer: number = null
-  let reloading: boolean = false
+  let reloading = false
   let mdRaw: string = null
-  let isSideHover: boolean = false
-  let globalEvent: Event = new Event()
+  let isSideHover = false
+  const globalEvent: Event = new Event()
 
   initPlugins({ event: globalEvent })
 
@@ -91,7 +91,7 @@ function main(data: Data) {
 
   const mdRenderer =
     (target: HTMLElement | Ele) =>
-    (code: string = '', options?: MdOptions) => {
+    (code = '', options?: MdOptions) => {
       target.innerHTML = mdRender(code, {
         theme: toTheme(configData.pageTheme),
         plugins: configData.mdPlugins,

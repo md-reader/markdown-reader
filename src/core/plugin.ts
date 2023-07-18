@@ -2,7 +2,7 @@ import type Event from './event'
 
 type Plugin = (ctx: Ctx) => void
 interface Ctx {
-  [p: string]: any
+  [p: string]: unknown
   event: Event
 }
 

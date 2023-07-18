@@ -1,4 +1,4 @@
-type EventListener = (...args: any) => void
+type EventListener = (...args: unknown[]) => void
 
 class Event {
   events: Map<string, EventListener[]> = new Map()
@@ -11,7 +11,7 @@ class Event {
     listeners.push(cb)
   }
   // emit event listeners
-  emit(name: string, ...args: any) {
+  emit(name: string, ...args: unknown[]) {
     if (this.events.get(name)) {
       this.events
         .get(name)
@@ -29,7 +29,7 @@ class Event {
   }
   // add event listener once
   once(name: string, cb: EventListener) {
-    const _cb = (...args: any) => {
+    const _cb = (...args: unknown[]) => {
       cb.apply(this, args)
       this.off(name, _cb)
     }

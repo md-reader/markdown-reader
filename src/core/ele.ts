@@ -6,7 +6,7 @@ export default class Ele<T extends ElementType = ElementType> {
   protected display: string
 
   static create<T extends ElementType>(tagName: string, attrs: Attrs = {}): T {
-    let { className, ...restAttrs } = attrs
+    const { className, ...restAttrs } = attrs
     let ele: T
 
     if (tagName === 'svg') {
@@ -46,7 +46,7 @@ export default class Ele<T extends ElementType = ElementType> {
   constructor(element: T, attrs?: Attrs, children?: Ele | ElementType)
   constructor(tagName: string, attrs?: Attrs, children?: Ele | ElementType)
   constructor(tagName: string, attrs?: Attrs, children?: (Ele | ElementType)[])
-  constructor(tagName: string | T, attrs?: Attrs, children?: any) {
+  constructor(tagName: string | T, attrs?: Attrs, children?) {
     if (typeof tagName !== 'string') {
       this.ele = tagName
     } else {
