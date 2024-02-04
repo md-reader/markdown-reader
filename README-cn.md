@@ -56,7 +56,7 @@
 
 ### A. 在线安装（需要机智上网）
 
-在 [Chrome 扩展商店](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) 直接安装。
+[![Chrome Web Store](./src/images/chrome-web-store.png)](https://chrome.google.com/webstore/detail/markdown-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
 ### B. 本地构建
 

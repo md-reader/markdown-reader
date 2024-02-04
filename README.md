@@ -56,7 +56,7 @@ Example:
 
 ### A. Online installation
 
-Install from the [chrome extension store](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg).
+[![Chrome Web Store](./src/images/chrome-web-store.png)](https://chrome.google.com/webstore/detail/markdown-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
 ### B. Building installation
 

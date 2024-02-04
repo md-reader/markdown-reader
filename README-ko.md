@@ -56,7 +56,7 @@
 
 ### A. 온라인
 
-[Chrome 웹 스토어](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)에서 설치하세요.
+[![Chrome Web Store](./src/images/chrome-web-store.png)](https://chrome.google.com/webstore/detail/markdown-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
 ### B. 로컬
 
