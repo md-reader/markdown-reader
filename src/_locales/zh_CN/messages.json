@@ -1,6 +1,6 @@
 {
   "ext_name": {
-    "message": "MD Reader",
+    "message": "Markdown Reader",
     "description": "一个可以使 Chrome 预览 markdown 文件的浏览器扩展。"
   },
   "ext_desc": {

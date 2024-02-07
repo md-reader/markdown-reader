@@ -1,22 +1,24 @@
 {
-  "name": "md-reader",
+  "name": "markdown-reader",
   "version": "2.13.0-beta.1",
   "author": "Bener",
   "license": "MIT",
   "description": "A markdown reader extension for chrome",
-  "homepage": "https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg",
+  "homepage": "https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg",
   "packageManager": "pnpm@7.5.0",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/Heroor/md-reader.git"
+    "url": "git+https://github.com/md-reader/markdown-reader.git"
   },
   "bugs": {
-    "url": "https://github.com/Heroor/md-reader/issues"
+    "url": "https://github.com/md-reader/markdown-reader/issues"
   },
   "keywords": [
     "md-reader",
-    "markdown",
+    "markdown-reader",
+    "md reader",
     "markdown reader",
+    "markdown",
     "chrome extension"
   ],
   "scripts": {

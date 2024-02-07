@@ -1,6 +1,6 @@
 ---
 name: Feature request
-about: Suggest an idea for md-reader
+about: Suggest an idea for Markdown Reader
 title: ''
 labels: suggestion
 assignees: ''

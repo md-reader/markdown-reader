@@ -22,7 +22,7 @@
     "service_worker": "js/background.js"
   },
   "action": {
-    "default_title": "md-reader",
+    "default_title": "Markdown Reader",
     "default_popup": "popup.html"
   },
   "content_scripts": [

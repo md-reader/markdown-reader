@@ -11,7 +11,7 @@
 
 <div>
   <Icon class="logo-icon" svg={logoIcon} />
-  <h1>md-reader</h1>
+  <h1>Markdown Reader</h1>
   <div class="links">
     <Wrapper>
       <a target="_blank" href={homepage}>
@@ -20,7 +20,7 @@
       <Tooltip xPos="start">Chrome Web Store</Tooltip>
     </Wrapper>
     <Wrapper>
-      <a target="_blank" href="https://github.com/md-reader/md-reader">
+      <a target="_blank" href="https://github.com/md-reader/markdown-reader">
         <Icon class="icon-link" svg={githubIcon} />
       </a>
       <Tooltip xPos="start">GitHub</Tooltip>

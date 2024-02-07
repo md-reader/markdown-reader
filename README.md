@@ -1,10 +1,10 @@
-# md-reader
+# Markdown Reader
 
 <img src="./src/images/logo-stroke.svg" align="right" width="120">
 
 English | [中文](./README-cn.md) | [한국어](./README-ko.md)
 
-[![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
+[![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
 A markdown reader extension for Chrome.
 
@@ -56,15 +56,15 @@ Example:
 
 ### A. Online installation
 
-[![Chrome Web Store](./src/images/chrome-web-store.png)](https://chrome.google.com/webstore/detail/markdown-reader/medapdbncneneejhbgcjceippjlfkmkg)
+[![Chrome Web Store](./src/images/chrome-web-store.png)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
 ### B. Building installation
 
-1. Clone `md-reader` repo and build:
+1. Clone `markdown-reader` repo and build:
 
    ```bash
    # Clone repository
-   git clone https://github.com/Heroor/md-reader.git && cd md-reader
+   git clone https://github.com/md-reader/markdown-reader.git && cd markdown-reader
 
    # Install dependencies
    pnpm install
@@ -73,7 +73,7 @@ Example:
    pnpm build
    ```
 
-2. After build, the `md-reader/dist` folder will generate a `md-reader-xxx.zip` extension package.
+2. After build, the `markdown-reader/dist` folder will generate a `markdown-reader-xxx.zip` extension package.
 
 3. On the Chrome extension management page and drag the extension into the browser.
 
@@ -81,19 +81,19 @@ Example:
 
 After installation, you should set local file access permissions before preview local files:
 
-Open `details` page of `md-reader` extension, enabled `Allow access to file URLs`.
+Open `details` page of `Markdown Reader` extension, enabled `Allow access to file URLs`.
 
 <br/>
 
 All right!
 
-Visit this [example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md) to test if it works, Or **drag** markdown file to the Chrome!
+Visit this [example.md](https://raw.githubusercontent.com/md-reader/markdown-reader/main/example/example.md) to test if it works, Or **drag** markdown file to the Chrome!
 
 ## Develop
 
 ```bash
 # Clone repository
-git clone https://github.com/Heroor/md-reader.git && cd md-reader
+git clone https://github.com/md-reader/markdown-reader.git && cd markdown-reader
 
 # Installation dependencies
 pnpm install
@@ -102,10 +102,10 @@ pnpm install
 pnpm dev
 ```
 
-On the Chrome extension management page, click "Load unpacked extension" and select `md-reader/extension` directory.
+On the Chrome extension management page, click "Load unpacked extension" and select `markdown-reader/extension` directory.
 
 ## License
 
-License [MIT](https://github.com/Heroor/md-reader/blob/master/LICENSE)
+License [MIT](https://github.com/md-reader/markdown-reader/blob/main/LICENSE)
 
 © 2018-present, [Bener](https://github.com/Heroor)

@@ -33,7 +33,7 @@
     "label.General": "General",
     "label.Plugins": "Plugins",
     "label.About": "About",
-    "desc.enable": "Enable md-reader",
+    "desc.enable": "Enable Markdown Reader",
     "desc.centered": "The content is displayed in the center",
     "desc.autoRefresh": "Automatic content refresh",
     "desc.Emoji": "Enable emoji syntax",
@@ -50,7 +50,7 @@
     "desc.TaskLists": "Enable task list syntax",
     "desc.Warning": "Enable warning block",
     "desc.Tips": "Enable tips block",
-    "desc.accessWarning": "Open the details page of extension \"md-reader\" and active \"Allow access to file URLs\"."
+    "desc.accessWarning": "Open the details page of extension \"Markdown Reader\" and active \"Allow access to file URLs\"."
   },
   "en-GB": {},
   "en-US": {},
@@ -80,7 +80,7 @@
     "label.General": "通用",
     "label.Plugins": "插件",
     "label.About": "关于",
-    "desc.enable": "开启 md-reader",
+    "desc.enable": "开启 Markdown Reader",
     "desc.centered": "内容居中显示",
     "desc.autoRefresh": "自动刷新",
     "desc.Emoji": "启用表情语法",
@@ -97,7 +97,7 @@
     "desc.TaskLists": "启用任务列表语法",
     "desc.Warning": "启用警告块",
     "desc.Tips": "启用提示块",
-    "desc.accessWarning": "请在 “md-reader” 扩展程序的 “详情” 中开启 “允许访问文件网址” 权限。"
+    "desc.accessWarning": "请在 “Markdown Reader” 扩展程序的 “详情” 中开启 “允许访问文件网址” 权限。"
   },
   "zh-TW": {
     "label.enable": "啟用",
@@ -125,7 +125,7 @@
     "label.General": "通用",
     "label.Plugins": "插件",
     "label.About": "關於",
-    "desc.enable": "開啟 md-reader",
+    "desc.enable": "開啟 Markdown Reader",
     "desc.centered": "內容居中顯示",
     "desc.autoRefresh": "自動刷新",
     "desc.Emoji": "啟用表情語法",
@@ -142,7 +142,7 @@
     "desc.TaskLists": "啟用任務列表語法",
     "desc.Warning": "啟用警告塊",
     "desc.Tips": "啟用提示塊",
-    "desc.accessWarning": "請在 “md-reader” 擴展程序的 “詳情” 中開啟 “允許訪問文件網址” 權限。"
+    "desc.accessWarning": "請在 “Markdown Reader” 擴展程序的 “詳情” 中開啟 “允許訪問文件網址” 權限。"
   },
   "ko": {
     "label.enable": "활성화",
@@ -170,7 +170,7 @@
     "label.General": "일반",
     "label.Plugins": "플러그인",
     "label.About": "정보",
-    "desc.enable": "md-reader 활성화",
+    "desc.enable": "Markdown Reader 활성화",
     "desc.centered": "콘텐츠 중앙에 표시",
     "desc.autoRefresh": "자동 콘텐츠 새로 고침",
     "desc.Emoji": "이모티콘 구문 활성화",
@@ -187,7 +187,7 @@
     "desc.TaskLists": "작업 목록 구문 활성화",
     "desc.Warning": "경고 블록 활성화",
     "desc.Tips": "팁 블록 활성화",
-    "desc.accessWarning": "확장 프로그램 \"md-reader\" 의 세부 정보 페이지를 열고 \"파일 URL에 대한 액세스 허용\"을 활성화 하세요."
+    "desc.accessWarning": "확장 프로그램 \"Markdown Reader\" 의 세부 정보 페이지를 열고 \"파일 URL에 대한 액세스 허용\"을 활성화 하세요."
   },
   "uk": {
     "label.enable": "Увімкнути",
@@ -215,7 +215,7 @@
     "label.General": "Загальне",
     "label.Plugins": "Плагіни",
     "label.About": "Про розширення",
-    "desc.enable": "Увімкнути md-reader",
+    "desc.enable": "Увімкнути Markdown Reader",
     "desc.centered": "Вміст відображається по центру",
     "desc.autoRefresh": "Автоматичне оновлення вмісту",
     "desc.Emoji": "Увімкнути синтаксис емодзі",
@@ -232,6 +232,6 @@
     "desc.TaskLists": "Увімкнути синтаксис списків завдань",
     "desc.Warning": "Увімкнути блок попередження",
     "desc.Tips": "Увімкнути блок порад",
-    "desc.accessWarning": "Відкрийте сторінку керування розширенням «md-reader» та активуйте «Надавати доступ до URL-адрес файлу»."
+    "desc.accessWarning": "Відкрийте сторінку керування розширенням «Markdown Reader» та активуйте «Надавати доступ до URL-адрес файлу»."
   }
 }

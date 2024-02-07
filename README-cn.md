@@ -1,10 +1,10 @@
-# md-reader
+# Markdown Reader
 
 <img src="./src/images/logo-stroke.svg" align="right" width="120">
 
 [English](./README.md) | 中文 | [한국어](./README-ko.md)
 
-[![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chrome.google.com/webstore/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
+[![](https://badgen.net/chrome-web-store/v/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/stars/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg) [![](https://badgen.net/chrome-web-store/users/medapdbncneneejhbgcjceippjlfkmkg?icon=chrome&color=607cd2)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
 一个可以使 Chrome 预览 markdown 文件的扩展程序。
 
@@ -56,15 +56,15 @@
 
 ### A. 在线安装（需要机智上网）
 
-[![Chrome Web Store](./src/images/chrome-web-store.png)](https://chrome.google.com/webstore/detail/markdown-reader/medapdbncneneejhbgcjceippjlfkmkg)
+[![Chrome Web Store](./src/images/chrome-web-store.png)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
 
 ### B. 本地构建
 
-1. 克隆 `md-reader` 仓库到本地并编译:
+1. 克隆 `markdown-reader` 仓库到本地并编译:
 
    ```bash
    # 克隆本仓库
-   git clone https://github.com/Heroor/md-reader.git && cd md-reader
+   git clone https://github.com/md-reader/markdown-reader.git && cd markdown-reader
 
    # 安装依赖
    pnpm install
@@ -73,7 +73,7 @@
    pnpm build
    ```
 
-2. 构建成功后，`md-reader/dist` 文件夹会生成 `md-reader-xxx.zip` 扩展程序包。
+2. 构建成功后，`markdown-reader/dist` 文件夹会生成 `markdown-reader-xxx.zip` 扩展程序包。
 
 3. 进入 Chrome 的扩展管理页，将扩展程序拖拽进浏览器即可安装。
 
@@ -83,13 +83,13 @@
 
 > 由于 Chrome 出于安全考虑，默认关闭了扩展程序对本地文件的访问权限，所以在安装完插件后需要手动开启权限，这样就可以正常预览本地 markdown 文件了。
 
-**开启权限**：在扩展程序管理页中，找到刚刚安装的 `md-reader`，点击 `详细信息`，在详情页找到 `允许访问文件网址` 选项，然后切换为开启状态即可（请放心：`md-reader` 只对 markdown 文件进行读取和展示的操作，不会修改和上传用户文件数据）。
+**开启权限**：在扩展程序管理页中，找到刚刚安装的 `Markdown Reader`，点击 `详细信息`，在详情页找到 `允许访问文件网址` 选项，然后切换为开启状态即可（请放心：`Markdown Reader` 只对 markdown 文件进行读取和展示的操作，不会修改和上传用户文件数据）。
 
 <br/>
 
 这样就大功告成啦~！ヾ(◍°∇°◍)ﾉ
 
-打开这个在线文件试一下效果吧：[example.md](https://raw.githubusercontent.com/Heroor/md-reader/main/example/example.md)，或者直接将 markdown 文件 **拖进浏览器** 试试！
+打开这个在线文件试一下效果吧：[example.md](https://raw.githubusercontent.com/md-reader/markdown-reader/main/example/example.md)，或者直接将 markdown 文件 **拖进浏览器** 试试！
 
 如有使用问题请提出，欢迎 Star~
 
@@ -97,7 +97,7 @@
 
 ```bash
 # 克隆本仓库
-git clone https://github.com/Heroor/md-reader.git && cd md-reader
+git clone https://github.com/md-reader/markdown-reader.git && cd markdown-reader
 
 # 安装依赖
 pnpm install
@@ -106,10 +106,10 @@ pnpm install
 pnpm dev
 ```
 
-在 Chrome 扩展程序管理页，点击“加载已解压的扩展程序”，选择 `md-reader/extension` 目录即可。
+在 Chrome 扩展程序管理页，点击“加载已解压的扩展程序”，选择 `markdown-reader/extension` 目录即可。
 
 ## 协议
 
-License [MIT](https://github.com/Heroor/md-reader/blob/master/LICENSE)
+License [MIT](https://github.com/md-reader/markdown-reader/blob/main/LICENSE)
 
 © 2018-present, [Bener](https://github.com/Heroor)
