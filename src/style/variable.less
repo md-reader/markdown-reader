@@ -1,5 +1,7 @@
 @import url('@md-reader/theme/src/index.less');
 
+@side-width: 260px;
+
 .light() {
   --color-white: #fff;
   --color-primary: #607cd2;
@@ -90,6 +92,7 @@
 }
 
 :root {
+  --side-width: @side-width;
   .light();
   @media (prefers-color-scheme: dark) {
     .dark();
@@ -106,6 +109,11 @@
     }
     &[data-md-reader-theme='dark'] {
       color-scheme: dark;
+    }
+    &[data-md-reader-theme-switching] {
+      .md-reader__side-splitter::after {
+        transition: none !important;
+      }
     }
   }
 }

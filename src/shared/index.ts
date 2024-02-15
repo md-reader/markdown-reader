@@ -1,5 +1,10 @@
+import debounce from 'lodash.debounce'
 import Ele from '@/core/ele'
-import { rootThemePrefix, type Theme } from '@/config/page-themes'
+import {
+  rootThemePrefix,
+  rootThemeSwitching,
+  type Theme,
+} from '@/config/page-themes'
 
 export const HTML = globalThis.document?.documentElement
 export const HEAD = globalThis.document?.head
@@ -34,8 +39,14 @@ export function getHeads(
 }
 
 export function setTheme(themeType: Theme) {
+  HTML.dataset[rootThemeSwitching] = ''
   HTML.dataset[rootThemePrefix] = themeType
+  resetThemeSwitching()
 }
+
+const resetThemeSwitching = debounce(() => {
+  delete HTML.dataset[rootThemeSwitching]
+}, 200)
 
 export function xhr(
   url: string,

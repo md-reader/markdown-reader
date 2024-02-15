@@ -75,7 +75,7 @@ function initRender(options: MdOptions) {
   const copyButton = new Ele<HTMLElement>(
     'button',
     {
-      className: [className.MD_BUTTON, className.COPY_BTN],
+      className: [className.BUTTON, className.COPY_BTN],
       title: 'Expand side',
     },
     [

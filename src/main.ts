@@ -49,9 +49,7 @@ function main(data: Data) {
     toggleCentered(value) {
       mdContent.classList.toggle('centered', value)
     },
-    toggleSide() {
-      onToggleSide()
-    },
+    toggleSide: onToggleSide,
   }
   chrome.runtime.onMessage.addListener(({ action, data: { key, value } }) => {
     const oldValue = configData[key]
@@ -84,9 +82,7 @@ function main(data: Data) {
 
   /* render content */
   const mdContent = new Ele<HTMLElement>('article', {
-    className: `${className.MD_CONTENT} ${
-      configData.centered ? 'centered' : ''
-    }`,
+    className: `${className.CONTENT} ${configData.centered ? 'centered' : ''}`,
   })
 
   const mdRenderer =
@@ -111,12 +107,27 @@ function main(data: Data) {
 
   const mdBody = new Ele<HTMLElement>(
     'main',
-    { className: className.MD_BODY },
+    { className: className.BODY },
     mdContent,
   )
 
   /* render side */
-  const mdSide = new Ele<HTMLElement>('ul', { className: className.MD_SIDE })
+  const mdSideList = new Ele<HTMLElement>('ul', {
+    className: className.SIDE_NAV,
+  })
+  const mdSideSplitter = new Ele<HTMLElement>('div', {
+    className: className.SIDE_SPLITTER,
+  })
+  const mdSide = new Ele<HTMLElement>('aside', { className: className.SIDE }, [
+    mdSideList,
+    mdSideSplitter,
+  ])
+  configData.sideWidth &&
+    document.documentElement.style.setProperty(
+      '--side-width',
+      `${configData.sideWidth}px`,
+    )
+
   let idCache: { [content: string]: number } = Object.create(null)
   let headElements: HTMLElement[] = []
   let sideLiElements: HTMLElement[] = []
@@ -128,6 +139,56 @@ function main(data: Data) {
   mdSide.on('mouseleave', () => {
     isSideHover = false
   })
+  mdSideSplitter.on('mousedown', ({ clientX: startX }: MouseEvent) => {
+    const minWidth = 100
+    const maxWidth = 800
+    const collapseWidth = minWidth / 2
+    const startWidth = mdSide.ele.clientWidth + 1
+    let width = startWidth
+    let isSideCollapsed = false
+    const onMouseMove = ({ clientX }: MouseEvent) => {
+      width = Math.min(maxWidth, startWidth + clientX - startX)
+      if (width <= collapseWidth) {
+        if (!isSideCollapsed) {
+          onToggleSide()
+          isSideCollapsed = true
+        }
+        width = startWidth
+      } else if (width > collapseWidth) {
+        if (isSideCollapsed) {
+          onToggleSide()
+          isSideCollapsed = false
+        }
+        width = Math.max(minWidth, width)
+      }
+      document.documentElement.style.setProperty('--side-width', `${width}px`)
+    }
+    const onMouseUp = () => {
+      chrome.runtime.sendMessage({
+        action: 'storage',
+        data: {
+          key: 'sideWidth',
+          value: width,
+        },
+      })
+      document.documentElement.classList.remove(className.STATIC)
+      document.removeEventListener('mousemove', onMouseMove)
+      document.removeEventListener('mouseup', onMouseUp)
+    }
+    document.documentElement.classList.add(className.STATIC)
+    document.addEventListener('mousemove', onMouseMove)
+    document.addEventListener('mouseup', onMouseUp)
+  })
+  mdSideSplitter.on('dblclick', () => {
+    document.documentElement.style.removeProperty('--side-width')
+    chrome.runtime.sendMessage({
+      action: 'storage',
+      data: {
+        key: 'sideWidth',
+        value: null,
+      },
+    })
+  })
 
   renderSide()
   document.addEventListener('scroll', throttle(onScroll, 100))
@@ -136,7 +197,7 @@ function main(data: Data) {
   const rawToggleBtn = new Ele<HTMLElement>(
     'button',
     {
-      className: [className.MD_BUTTON, className.CODE_TOGGLE_BTN],
+      className: [className.BUTTON, className.CODE_TOGGLE_BTN],
       title: 'Toggle raw',
     },
     svg(codeIcon),
@@ -149,20 +210,12 @@ function main(data: Data) {
   const sideExpandBtn = new Ele<HTMLElement>(
     'button',
     {
-      className: [className.MD_BUTTON, className.SIDE_EXPAND_BTN],
+      className: [className.BUTTON, className.SIDE_EXPAND_BTN],
       title: 'Expand side',
     },
     svg(sideIcon),
   )
-  sideExpandBtn.on('click', () => {
-    chrome.runtime.sendMessage({
-      action: 'storage',
-      data: {
-        key: 'hiddenSide',
-        value: !configData.hiddenSide,
-      },
-    })
-  })
+  sideExpandBtn.on('click', onToggleSide)
   function onToggleSide() {
     if (window.innerWidth <= 960) {
       const value = document.body.classList.toggle(className.SIDE_EXPANDED)
@@ -180,6 +233,13 @@ function main(data: Data) {
       configData.hiddenSide = document.body.classList.toggle(
         className.SIDE_COLLAPSED,
       )
+      chrome.runtime.sendMessage({
+        action: 'storage',
+        data: {
+          key: 'hiddenSide',
+          value: configData.hiddenSide,
+        },
+      })
     }
   }
   function foldSide(e: UIEvent) {
@@ -198,7 +258,7 @@ function main(data: Data) {
   const goTopBtn = new Ele<HTMLElement>(
     'button',
     {
-      className: [className.MD_BUTTON, className.GO_TOP_BTN],
+      className: [className.BUTTON, className.GO_TOP_BTN],
       title: 'Go top',
     },
     svg(goTopIcon),
@@ -263,8 +323,8 @@ function main(data: Data) {
     headElements = getHeads(mdContent)
     df = new Ele<DocumentFragment>('#document-fragment')
     sideLiElements = headElements.reduce(handleHeadItem, [])
-    mdSide.innerHTML = null
-    mdSide.append(df)
+    mdSideList.innerHTML = null
+    mdSideList.append(df)
     setTimeout(onScroll, 0)
   }
 
@@ -290,7 +350,7 @@ function main(data: Data) {
     })
     link.textContent = content
     const li = new Ele<HTMLElement>('li', {
-      className: `${className.MD_SIDE}-${head.tagName.toLowerCase()}`,
+      className: `${className.SIDE}-${head.tagName.toLowerCase()}`,
     })
     eleList.push(li.ele)
     li.append(link)
@@ -325,11 +385,11 @@ function main(data: Data) {
 
       if (hit && (targetIndex !== index || reloading)) {
         let target = sideLiElements[targetIndex]
-        target && target.classList.remove(className.MD_SIDE_ACTIVE)
+        target && target.classList.remove(className.SIDE_ACTIVE)
 
         target = sideLiElements[(targetIndex = index)]
         if (target) {
-          target.classList.add(className.MD_SIDE_ACTIVE)
+          target.classList.add(className.SIDE_ACTIVE)
           if (!isSideHover && target.scrollIntoView) {
             target.scrollIntoView({ block: 'nearest' })
           }

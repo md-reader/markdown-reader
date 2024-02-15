@@ -10,6 +10,7 @@ export interface Data {
   mdPlugins?: typeof MD_PLUGINS
   pageTheme?: Theme
   hiddenSide?: boolean
+  sideWidth?: number
 }
 
 export function getDefaultData(mergeData: Data = {}): Data {

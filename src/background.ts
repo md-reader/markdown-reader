@@ -10,6 +10,8 @@ async function messageHandler(action: string, data, callback?: (data) => void) {
   switch (action) {
     case 'storage':
       await storage.set({ [data.key]: data.value })
+    // eslint-disable-next-line no-fallthrough
+    case 'action':
       updatePage(data.key, data.value)
       callback?.(data)
       break
@@ -36,7 +38,7 @@ const actionMap = {
   centered: 'toggleCentered',
   mdPlugins: 'updateMdPlugins',
   pageTheme: 'updatePageTheme',
-  hiddenSide: 'toggleSide',
+  toggleSide: 'toggleSide',
 }
 
 function updatePage(key: keyof typeof actionMap, value?) {

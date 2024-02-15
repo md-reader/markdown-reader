@@ -4,6 +4,7 @@ import { toTheme } from '@/shared/index'
 export default {
   async toggleSide(handler) {
     await toggle(handler, 'hiddenSide', false)
+    await handler('action', { key: 'toggleSide' })
   },
   async toggleCentered(handler) {
     await toggle(handler, 'centered', true)

@@ -1,5 +1,15 @@
 @import url('./variable.less');
-@side-width: 260px;
+
+:root {
+  &.md-reader__static {
+    .md-reader__btn--side-expand,
+    .md-reader__body,
+    .md-reader__side,
+    .md-reader__side-nav {
+      transition: none !important;
+    }
+  }
+}
 
 body.md-reader {
   margin: 0;
@@ -18,24 +28,58 @@ body.md-reader {
 
   .md-reader {
     &__side {
-      overflow: auto;
       position: fixed;
       top: 0;
       bottom: 0;
       left: 0;
-      width: @side-width;
-      line-height: 1.4;
-      font-size: 14px;
-      padding: 22px 0;
+      width: var(--side-width);
       border-right: 1px solid var(--color-side-border);
-      margin: 0;
-      list-style: none;
       color: var(--color-side);
       background: var(--color-side-bg);
-      transition: transform 0.3s, box-shadow 0.5s;
+      transition: width 0.3s, transform 0.3s, box-shadow 0.5s;
       transition-timing-function: var(--func-show-in);
-      will-change: transform, box-shadow;
+      will-change: width, transform, box-shadow;
       z-index: 1;
+      &-splitter {
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        right: -4px;
+        padding: 0 2px;
+        user-select: none;
+        z-index: 1;
+        &::after {
+          content: '';
+          display: block;
+          width: 3px;
+          height: 100%;
+          transition: background 0.2s;
+        }
+        &:active,
+        &:hover {
+          cursor: col-resize;
+          &::after {
+            background: var(--color-border);
+          }
+        }
+        &:hover::after {
+          transition: background 0.2s 0.2s;
+        }
+      }
+      &-nav {
+        overflow: auto;
+        height: 100%;
+        width: 100%;
+        line-height: 1.4;
+        font-size: 14px;
+        padding: 22px 0;
+        margin: 0;
+        list-style: none;
+        opacity: 1;
+        transform: translateX(0);
+        transition: opacity 0.6s, transform 0.5s;
+        transition-timing-function: var(--func-show-in);
+      }
       li {
         &.md-reader__side-li--active {
           a {
@@ -90,7 +134,7 @@ body.md-reader {
 
     &__body {
       min-height: 100vh;
-      padding-left: @side-width;
+      padding-left: var(--side-width);
       transition: padding 0.3s var(--func-show-in);
       .md-reader__markdown-content {
         padding: 30px 70px 40px;
@@ -189,14 +233,19 @@ body.md-reader {
 
     @media screen and (max-width: 960px) {
       &__side {
+        --side-width: @side-width;
         transform: translateX(-101%);
         border-color: transparent;
+        &-nav {
+          opacity: 0;
+          transform: translateX(-2em);
+        }
       }
       &__body {
-        padding-left: 0px;
+        --side-width: 0;
       }
       &__btn--side-expand {
-        transform: translateX(0);
+        --side-width: 0;
       }
     }
     @media screen and (min-width: 1660px) {
@@ -214,6 +263,11 @@ body.md-reader {
       }
     }
     @media print {
+      &__side {
+        &-splitter {
+          display: none;
+        }
+      }
       &__button-wrap {
         display: none;
       }
@@ -232,12 +286,16 @@ body.md-reader {
       &__side {
         transform: translateX(-101%);
         border-color: transparent;
+        &-nav {
+          opacity: 0;
+          transform: translateX(-2em);
+        }
       }
       &__body {
-        padding-left: 0px;
+        --side-width: 0;
       }
       &__btn--side-expand {
-        transform: translateX(0);
+        --side-width: 0;
       }
     }
   }
@@ -246,9 +304,16 @@ body.md-reader {
       &__side {
         box-shadow: var(--color-side-shadow);
         transform: translateX(0);
+        &-nav {
+          opacity: 1;
+          transform: translateX(0);
+        }
+        &-splitter {
+          display: none;
+        }
       }
       &__btn--side-expand {
-        transform: translateX(-50px);
+        --side-width: -50px;
       }
     }
   }
@@ -311,7 +376,7 @@ body.md-reader {
       left: 16px;
       transition: background 0.1s, color 0.1s,
         transform 0.3s var(--func-show-in);
-      transform: translateX(@side-width);
+      transform: translateX(var(--side-width));
     }
     &--go-top {
       position: fixed;

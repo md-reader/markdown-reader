@@ -3,11 +3,13 @@ const p = ([block]: TemplateStringsArray) => PREFIX + block
 
 export default {
   PREFIX,
-  MD_BODY: p`body`,
-  MD_SIDE: p`side`,
-  MD_SIDE_ACTIVE: p`side-li--active`,
-  MD_CONTENT: p`markdown-content`,
-  MD_BUTTON: p`btn`,
+  BODY: p`body`,
+  SIDE: p`side`,
+  SIDE_NAV: p`side-nav`,
+  SIDE_SPLITTER: p`side-splitter`,
+  SIDE_ACTIVE: p`side-li--active`,
+  CONTENT: p`markdown-content`,
+  BUTTON: p`btn`,
   HEAD_ANCHOR: p`head-anchor`,
   BUTTON_WRAP_ELE: p`button-wrap`,
   CODE_TOGGLE_BTN: p`btn--code-toggle`,
@@ -18,4 +20,5 @@ export default {
   SIDE_EXPANDED: 'side-expanded',
   MODAL: p`modal`,
   ZOOM_IMAGE: p`zoom-image`,
+  STATIC: p`static`,
 }
