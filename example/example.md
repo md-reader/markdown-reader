@@ -324,10 +324,18 @@ It converts "HTML", but keep intact partial entries like "xxxHTMLyyy" and so on.
 
 ### [Custom containers](https://github.com/markdown-it/markdown-it-container)
 
+::: danger
+_Here be dragons!_
+:::
+
 ::: warning
-_Here be dragons._
+__Here be death.__
+:::
+
+::: success
+*Here be madness.*
 :::
 
 ::: tips
-*Dragon is dangerous.*
+**Here be the end of the world.**
 :::

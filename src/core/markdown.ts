@@ -39,6 +39,28 @@ const PLUGINS: Plugins = {
   Footnote: [mFootnote],
   TaskLists: [mTaskLists],
   TOC: [mToc],
+  Tips: [
+    mContainer,
+    'tips',
+    {
+      render(tokens, idx) {
+        return tokens[idx].nesting === 1
+          ? '<blockquote class="tip">\n'
+          : '</blockquote>\n'
+      },
+    },
+  ],
+  Success: [
+    mContainer,
+    'success',
+    {
+      render(tokens, idx) {
+        return tokens[idx].nesting === 1
+          ? '<blockquote class="success">\n'
+          : '</blockquote>\n'
+      },
+    },
+  ],
   Warning: [
     mContainer,
     'warning',
@@ -50,13 +72,13 @@ const PLUGINS: Plugins = {
       },
     },
   ],
-  Tips: [
+  Danger: [
     mContainer,
-    'tips',
+    'danger',
     {
       render(tokens, idx) {
         return tokens[idx].nesting === 1
-          ? '<blockquote class="tip">\n'
+          ? '<blockquote class="danger">\n'
           : '</blockquote>\n'
       },
     },

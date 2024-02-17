@@ -43,8 +43,7 @@ Example:
   - Definition list
   - Footnote
   - Task Lists
-  - Warning container
-  - Tips container
+  - Info/Success/Warning/Danger alert
 - Support OS:
   - Windows
   - macOS

@@ -9,8 +9,8 @@ dependencies:
     specifier: ^0.5.1
     version: 0.5.1
   '@md-reader/theme':
-    specifier: ^1.0.27
-    version: 1.0.27
+    specifier: ^1.0.29
+    version: 1.0.29
   '@smui/button':
     specifier: ^4.2.0
     version: 4.2.0
@@ -951,10 +951,10 @@ packages:
       murmurhash-js: 1.0.0
     dev: false
 
-  /@md-reader/theme@1.0.27:
+  /@md-reader/theme@1.0.29:
     resolution:
       {
-        integrity: sha512-BzXuU4B4R/5+LfIsWz7VgZQPU5UbG5vdUOdWcKklb/qEtRldi+POD53eL/8ReAV8Hr3UrebD3G/2Ck4hrK19LA==,
+        integrity: sha512-n/ifMQnDrmhvyt7975BctSy6rJE13HCTxUcanfttUzgz/rJMljgq0KJnasb1FSVmCMmXPQgJ2ceejEQoMmHa0g==,
       }
     dependencies:
       katex: 0.16.8
