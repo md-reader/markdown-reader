@@ -168,6 +168,12 @@ body.md-reader {
               opacity: 1;
             }
           }
+          &::before {
+            content: '';
+            display: block;
+            height: calc(32px - 0.76em);
+            margin-top: calc(-32px + 0.76em);
+          }
         }
         // code-block copy button
         pre.md-reader__code-block {
@@ -181,7 +187,7 @@ body.md-reader {
             }
           }
           &:hover {
-            code::before {
+            code:not(:empty)::before {
               opacity: 0;
             }
             .md-reader__btn--copy {
