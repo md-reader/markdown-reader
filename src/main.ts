@@ -143,7 +143,7 @@ function main(data: Data) {
     const minWidth = 100
     const maxWidth = 800
     const collapseWidth = minWidth / 2
-    const startWidth = mdSide.ele.clientWidth + 1
+    const startWidth = mdSide.ele.clientWidth
     let width = startWidth
     let isSideCollapsed = false
     const onMouseMove = ({ clientX }: MouseEvent) => {

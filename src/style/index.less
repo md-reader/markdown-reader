@@ -33,7 +33,6 @@ body.md-reader {
       bottom: 0;
       left: 0;
       width: var(--side-width);
-      border-right: 1px solid var(--color-side-border);
       color: var(--color-side);
       background: var(--color-side-bg);
       transition: width 0.3s, transform 0.3s, box-shadow 0.5s;
@@ -44,26 +43,29 @@ body.md-reader {
         position: absolute;
         top: 0;
         bottom: 0;
-        right: -4px;
-        padding: 0 2px;
+        right: -3px;
+        padding: 0 3px;
         user-select: none;
+        cursor: col-resize;
         z-index: 1;
         &::after {
           content: '';
           display: block;
-          width: 3px;
+          width: 1px;
           height: 100%;
-          transition: background 0.2s;
+          transition: 0.3s;
+          transition-property: transform, background;
+          background: var(--color-side-border);
         }
         &:active,
         &:hover {
-          cursor: col-resize;
           &::after {
+            transform: scaleX(3);
             background: var(--color-border);
           }
         }
         &:hover::after {
-          transition: background 0.2s 0.2s;
+          transition-delay: 0.2s;
         }
       }
       &-nav {
