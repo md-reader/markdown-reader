@@ -238,7 +238,7 @@
     height: 100%;
   }
   .setting-side {
-    padding: 8px;
+    padding: 10px;
     border-right: 1px solid #eeeeee;
     background: #f9fafb;
   }
@@ -250,11 +250,13 @@
     color: #243158e3;
   }
   .setting-side li {
-    margin-bottom: 1px;
+    margin-bottom: 6px;
   }
   .setting-side li button:active,
   .setting-side li.active button {
-    transition: 0.2s, background 0s;
+    transition:
+      0.2s,
+      background 0s;
     background: #e9efff;
     color: var(--mdc-theme-primary);
   }
@@ -270,15 +272,15 @@
     transform: scale(0.95);
   }
   .setting-side li button :global(svg) {
-    width: 30px;
-    height: 30px;
+    width: 26px;
+    height: 26px;
   }
   .setting-side button {
     display: block;
     background: none;
     border: none;
     border-radius: 8px;
-    padding: 9px;
+    padding: 7px;
     font-size: 0;
     cursor: pointer;
     color: currentColor;
