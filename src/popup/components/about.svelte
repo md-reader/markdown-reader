@@ -2,7 +2,7 @@
   import Tooltip, { Wrapper } from '@smui/tooltip'
   import Icon from './icon.svelte'
   import logoIcon from '@/images/logo.svg'
-  import chromeIcon from '@/images/chrome-web-store.svg'
+  import chromeIcon from '@/images/chrome-web-store-logo.svg'
   import githubIcon from '@/images/github.svg'
   import emailIcon from '@/images/email.svg'
   export let homepage

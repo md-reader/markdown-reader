@@ -55,7 +55,7 @@ Example:
 
 ### A. Online installation
 
-[![Chrome Web Store](./src/images/chrome-web-store.png)](https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg)
+<a href="https://chromewebstore.google.com/detail/md-reader/medapdbncneneejhbgcjceippjlfkmkg" target="_blank"><img src="./src/images/chrome-web-store.svg" alt="Chrome Web Store" style="width:247px"/></a>
 
 ### B. Building installation
 
