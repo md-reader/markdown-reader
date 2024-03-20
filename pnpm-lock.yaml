@@ -173,8 +173,8 @@ devDependencies:
     specifier: ^4.10.0
     version: 4.10.0(webpack@5.88.2)
   webpack-ext-reloader:
-    specifier: ^1.1.9
-    version: 1.1.9(webpack-cli@4.10.0)(webpack@5.88.2)
+    specifier: ^1.1.12
+    version: 1.1.12(webpack-cli@4.10.0)(webpack@5.88.2)
   webpack-merge:
     specifier: ^5.9.0
     version: 5.9.0
@@ -1336,17 +1336,17 @@ packages:
       }
     dev: true
 
-  /@types/webextension-polyfill@0.8.3:
+  /@types/webextension-polyfill@0.10.7:
     resolution:
       {
-        integrity: sha512-GN+Hjzy9mXjWoXKmaicTegv3FJ0WFZ3aYz77Wk8TMp1IY3vEzvzj1vnsa0ggV7vMI1i+PUxe4qqnIJKCzf9aTg==,
+        integrity: sha512-10ql7A0qzBmFB+F+qAke/nP1PIonS0TXZAOMVOxEUsm+lGSW6uwVcISFNa0I4Oyj0884TZVWGGMIWeXOVSNFHw==,
       }
     dev: true
 
-  /@types/webpack-sources@3.2.0:
+  /@types/webpack-sources@3.2.3:
     resolution:
       {
-        integrity: sha512-Ft7YH3lEVRQ6ls8k4Ff1oB4jN6oy/XmU6tQISKdhfh+1mR+viZFphS6WL0IrtDOzvefmJg5a0s7ZQoRXwqTEFg==,
+        integrity: sha512-4nZOdMwSPHZ4pTEZzSp0AsTM4K7Qmu40UKW4tJDiOVs20UzYF9l+qUe4s0ftfN0pin06n+5cWWDJXH+sbhAiDw==,
       }
     dependencies:
       '@types/node': 18.17.1
@@ -1354,10 +1354,10 @@ packages:
       source-map: 0.7.4
     dev: true
 
-  /@types/webpack@5.28.1(webpack-cli@4.10.0):
+  /@types/webpack@5.28.5(webpack-cli@4.10.0):
     resolution:
       {
-        integrity: sha512-qw1MqGZclCoBrpiSe/hokSgQM/su8Ocpl3L/YHE0L6moyaypg4+5F7Uzq7NgaPKPxUxUbQ4fLPLpDWdR27bCZw==,
+        integrity: sha512-wR87cgvxj3p6D0Crt1r5avwqffqPXUkNlnQ1mjU93G7gCuFjufZR4I6j8cz5g1F1tTYpfOOFvly+cmIQwL9wvw==,
       }
     dependencies:
       '@types/node': 18.17.1
@@ -7287,10 +7287,10 @@ packages:
       }
     dev: false
 
-  /webextension-polyfill@0.8.0:
+  /webextension-polyfill@0.10.0:
     resolution:
       {
-        integrity: sha512-a19+DzlT6Kp9/UI+mF9XQopeZ+n2ussjhxHJ4/pmIGge9ijCDz7Gn93mNnjpZAk95T4Tae8iHZ6sSf869txqiQ==,
+        integrity: sha512-c5s35LgVa5tFaHhrZDnr3FpQpjj1BB+RXhLTYUxGqBVN460HkbM8TBtEqdXWbpTKfzwCcjAZVF7zXCYSKtcp9g==,
       }
     dev: true
 
@@ -7332,28 +7332,29 @@ packages:
       webpack-merge: 5.9.0
     dev: true
 
-  /webpack-ext-reloader@1.1.9(webpack-cli@4.10.0)(webpack@5.88.2):
+  /webpack-ext-reloader@1.1.12(webpack-cli@4.10.0)(webpack@5.88.2):
     resolution:
       {
-        integrity: sha512-6AVXGrjcVHKtIQn4yGGghJpiIV2h9F7hNKLsh1oP8m+d6H3QLF3jTNu3vNdKu/8Lab3J/gwb7Bm7tjZLa+DS6g==,
+        integrity: sha512-UHjwiX8Qx4aAV8XkQQeHVDP6+7NY0wT/C+t8TNlEClcv/+mkKiRRlEi3Yq5yeaViM7DCFS1x8OBp5DyELB/JWg==,
       }
     hasBin: true
     peerDependencies:
       webpack: ^5.61.0
     dependencies:
-      '@types/webextension-polyfill': 0.8.3
-      '@types/webpack': 5.28.1(webpack-cli@4.10.0)
-      '@types/webpack-sources': 3.2.0
+      '@types/webextension-polyfill': 0.10.7
+      '@types/webpack': 5.28.5(webpack-cli@4.10.0)
+      '@types/webpack-sources': 3.2.3
       clean-webpack-plugin: 4.0.0(webpack@5.88.2)
       colors: 1.4.0
       cross-env: 7.0.3
+      json5: 2.2.3
       lodash: 4.17.21
       minimist: 1.2.8
       useragent: 2.3.0
-      webextension-polyfill: 0.8.0
+      webextension-polyfill: 0.10.0
       webpack: 5.88.2(webpack-cli@4.10.0)
       webpack-sources: 3.2.3
-      ws: 8.13.0
+      ws: 8.16.0
     transitivePeerDependencies:
       - '@swc/core'
       - bufferutil
@@ -7522,10 +7523,10 @@ packages:
       }
     dev: true
 
-  /ws@8.13.0:
+  /ws@8.16.0:
     resolution:
       {
-        integrity: sha512-x9vcZYTrFPC7aSIbj7sRCYo7L/Xb8Iy+pW0ng0wt2vCJv7M9HOMy0UoN3rr+IFC7hb7vXoqS+P9ktyLLLhO+LA==,
+        integrity: sha512-HS0c//TP7Ina87TfiPUz1rQzMhHrl/SG2guqRcTOIUYD2q8uhUdNHZYJUaQ8aTGPzCh+c6oawMKW35nFl1dxyQ==,
       }
     engines: { node: '>=10.0.0' }
     peerDependencies:

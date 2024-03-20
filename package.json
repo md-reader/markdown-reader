@@ -62,7 +62,7 @@
     "typescript": "^4.9.5",
     "webpack": "^5.88.1",
     "webpack-cli": "^4.10.0",
-    "webpack-ext-reloader": "^1.1.9",
+    "webpack-ext-reloader": "^1.1.12",
     "webpack-merge": "^5.9.0"
   },
   "dependencies": {
