@@ -81,7 +81,7 @@ function main(data: Data) {
   mdRaw = rawContainer?.textContent
 
   /* render content */
-  const mdContent = new Ele<HTMLElement>('article', {
+  const mdContent = Ele.article({
     className: `${className.CONTENT} ${configData.centered ? 'centered' : ''}`,
   })
 
@@ -105,20 +105,16 @@ function main(data: Data) {
     true,
   )
 
-  const mdBody = new Ele<HTMLElement>(
-    'main',
-    { className: className.BODY },
-    mdContent,
-  )
+  const mdBody = Ele.main({ className: className.BODY }, mdContent)
 
   /* render side */
-  const mdSideList = new Ele<HTMLElement>('ul', {
+  const mdSideList = Ele.ul({
     className: className.SIDE_NAV,
   })
-  const mdSideSplitter = new Ele<HTMLElement>('div', {
+  const mdSideSplitter = Ele.div({
     className: className.SIDE_SPLITTER,
   })
-  const mdSide = new Ele<HTMLElement>('aside', { className: className.SIDE }, [
+  const mdSide = Ele.aside({ className: className.SIDE }, [
     mdSideList,
     mdSideSplitter,
   ])
@@ -194,8 +190,7 @@ function main(data: Data) {
   document.addEventListener('scroll', throttle(onScroll, 100))
 
   /* render raw toggle button */
-  const rawToggleBtn = new Ele<HTMLElement>(
-    'button',
+  const rawToggleBtn = Ele.button(
     {
       className: [className.BUTTON, className.CODE_TOGGLE_BTN],
       title: 'Toggle raw',
@@ -207,8 +202,7 @@ function main(data: Data) {
   })
 
   /* render side expand button */
-  const sideExpandBtn = new Ele<HTMLElement>(
-    'button',
+  const sideExpandBtn = Ele.button(
     {
       className: [className.BUTTON, className.SIDE_EXPAND_BTN],
       title: 'Expand side',
@@ -255,8 +249,7 @@ function main(data: Data) {
     return false
   }
   /* render go top button */
-  const goTopBtn = new Ele<HTMLElement>(
-    'button',
+  const goTopBtn = Ele.button(
     {
       className: [className.BUTTON, className.GO_TOP_BTN],
       title: 'Go top',
@@ -266,11 +259,11 @@ function main(data: Data) {
   goTopBtn.hide()
   goTopBtn.on('click', () => window.scrollTo({ top: 0, behavior: 'smooth' }))
 
-  const buttonWrap = new Ele<HTMLElement>(
-    'div',
-    { className: className.BUTTON_WRAP_ELE },
-    [sideExpandBtn, rawToggleBtn, goTopBtn],
-  )
+  const buttonWrap = Ele.div({ className: className.BUTTON_WRAP_ELE }, [
+    sideExpandBtn,
+    rawToggleBtn,
+    goTopBtn,
+  ])
 
   /* mount elements */
   lifecycle.mount([buttonWrap, mdBody, mdSide])
@@ -321,7 +314,7 @@ function main(data: Data) {
   function renderSide() {
     idCache = Object.create(null)
     headElements = getHeads(mdContent)
-    df = new Ele<DocumentFragment>('#document-fragment')
+    df = Ele.fragment()
     sideLiElements = headElements.reduce(handleHeadItem, [])
     mdSideList.innerHTML = null
     mdSideList.append(df)
@@ -337,19 +330,19 @@ function main(data: Data) {
 
     head.setAttribute('id', encodeContent)
 
-    const headAnchor = new Ele<HTMLElement>('a', {
+    const headAnchor = Ele.a({
       className: className.HEAD_ANCHOR,
       href: `#${encodeContent}`,
     })
     headAnchor.textContent = '#'
     head.insertBefore(headAnchor.ele, head.firstChild)
 
-    const link = new Ele<HTMLElement>('a', {
+    const link = Ele.a({
       title: content,
       href: `#${encodeContent}`,
     })
     link.textContent = content
-    const li = new Ele<HTMLElement>('li', {
+    const li = Ele.li({
       className: `${className.SIDE}-${head.tagName.toLowerCase()}`,
     })
     eleList.push(li.ele)

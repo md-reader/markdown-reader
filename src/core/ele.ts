@@ -1,5 +1,18 @@
 export type ElementType = HTMLElement | SVGSVGElement | DocumentFragment
-export type Attrs = { className?: string | string[] } | { [k: string]: string }
+export type Attrs =
+  | Record<string, string>
+  | {
+      className?: string | string[]
+      style?: string | string[] | Partial<CSSStyleDeclaration>
+    }
+type RestEleParams = ConstructorParameters<typeof Ele> extends [
+  first: unknown,
+  ...rest: infer U,
+]
+  ? U
+  : never
+
+const FRAGMENT_TAGNAME = '#document-fragment'
 
 export default class Ele<T extends ElementType = ElementType> {
   ele: T
@@ -14,7 +27,7 @@ export default class Ele<T extends ElementType = ElementType> {
         'http://www.w3.org/2000/svg',
         'svg',
       )
-    } else if (tagName === '#document-fragment') {
+    } else if (tagName === FRAGMENT_TAGNAME) {
       ;(ele as DocumentFragment) = document.createDocumentFragment()
     } else {
       ;(ele as HTMLElement) = document.createElement(tagName)
@@ -43,16 +56,17 @@ export default class Ele<T extends ElementType = ElementType> {
     return node instanceof Ele ? node.ele : node
   }
 
-  constructor(element: T, attrs?: Attrs, children?: Ele | ElementType)
-  constructor(tagName: string, attrs?: Attrs, children?: Ele | ElementType)
-  constructor(tagName: string, attrs?: Attrs, children?: (Ele | ElementType)[])
-  constructor(tagName: string | T, attrs?: Attrs, children?) {
+  constructor(
+    tagName: string | T,
+    attrs?: Attrs,
+    children?: Ele | ElementType | (Ele | ElementType)[],
+  ) {
     if (typeof tagName !== 'string') {
       this.ele = tagName
     } else {
       this.ele = Ele.create<T>(tagName, attrs)
     }
-    children && this.append(children)
+    children && this.append(children as Ele)
   }
 
   get classList(): DOMTokenList {
@@ -167,6 +181,22 @@ export default class Ele<T extends ElementType = ElementType> {
   ): void {
     this.ele.removeEventListener(eventType, listener, options)
   }
+
+  static a = (...p: RestEleParams) => new Ele<HTMLElement>('a', ...p)
+  static p = (...p: RestEleParams) => new Ele<HTMLElement>('p', ...p)
+  static ul = (...p: RestEleParams) => new Ele<HTMLElement>('ul', ...p)
+  static li = (...p: RestEleParams) => new Ele<HTMLElement>('li', ...p)
+  static div = (...p: RestEleParams) => new Ele<HTMLElement>('div', ...p)
+  static span = (...p: RestEleParams) => new Ele<HTMLElement>('span', ...p)
+  static main = (...p: RestEleParams) => new Ele<HTMLElement>('main', ...p)
+  static aside = (...p: RestEleParams) => new Ele<HTMLElement>('aside', ...p)
+  static article = (...p: RestEleParams) =>
+    new Ele<HTMLElement>('article', ...p)
+  static button = (...p: RestEleParams) => new Ele<HTMLElement>('button', ...p)
+  static img = (...p: RestEleParams) => new Ele<HTMLImageElement>('img', ...p)
+  static svg = (...p: RestEleParams) => new Ele<SVGSVGElement>('svg', ...p)
+  static fragment = (...p: RestEleParams) =>
+    new Ele<DocumentFragment>(FRAGMENT_TAGNAME, ...p)
 }
 
 function isFragment(element: ElementType | Ele): element is DocumentFragment {
