@@ -1,6 +1,12 @@
 # Markdown Reader
 
-<img src="./src/images/logo-stroke.svg" align="right" width="120">
+<a href="https://md-reader.github.io/" target="_blank">
+  <picture>
+    <source media="(prefers-color-scheme: light)" srcset="https://raw.githubusercontent.com/md-reader/markdown-reader/main/src/images/logo.svg">
+    <source media="(prefers-color-scheme: dark)" srcset="https://raw.githubusercontent.com/md-reader/markdown-reader/main/src/images/logo-light.svg">
+    <img alt="Markdown Reader Logo" src="https://raw.githubusercontent.com/md-reader/markdown-reader/main/src//images/logo-stroke.svg" align="right" width="120">
+  </picture>
+</a>
 
 [English](./README.md) | 中文 | [한국어](./README-ko.md)
 
